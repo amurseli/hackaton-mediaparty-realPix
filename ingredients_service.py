@@ -1,5 +1,6 @@
 import httpx
 import base64
+from ai_detector import is_ai_generated
 
 C2PA_API_URL = "https://api.realpix.org/c2pa/upload"
 
@@ -30,10 +31,14 @@ def parse_manifest_node(manifest_id: str, manifests: dict, visited=None, include
         "format": manifest.get("format"),
         "instance_id": manifest.get("instance_id"),
         "actions": [],
-        "ingredients": []
+        "ingredients": [],
+        "ai_generated": is_ai_generated(
+            manifest.get("claim_generator"),
+            signature.get("issuer"),
+            manifest.get("title")
+        )
     }
 
-    # Thumbnails opcionales
     if include_thumbnails and "thumbnail" in manifest:
         thumb_data = manifest["thumbnail"].get("data", {})
         if thumb_data.get("type") == "Buffer":
@@ -41,7 +46,6 @@ def parse_manifest_node(manifest_id: str, manifests: dict, visited=None, include
             b64_thumb = base64.b64encode(bytes(thumb_data.get("data", []))).decode("utf-8")
             node["thumbnail"] = f"data:{manifest['thumbnail'].get('format')};base64,{b64_thumb}"
 
-    # Parse de assertions → acciones
     for assertion in manifest.get("assertions", []):
         if assertion.get("label") == "c2pa.actions":
             actions_data = assertion.get("data", {})
@@ -53,7 +57,6 @@ def parse_manifest_node(manifest_id: str, manifests: dict, visited=None, include
             if "metadata" in actions_data:
                 node["actions_metadata"] = actions_data["metadata"]
 
-    # Parse de ingredientes
     for ing in manifest.get("ingredients", []):
         ing_id = ing.get("document_id")
         if ing_id and ing_id in manifests:
