@@ -1,0 +1,394 @@
+{
+    "manifests": {
+        "adobe:urn:uuid:9e598e6b-9ce1-433d-ad1a-fcf26a6cbea7": {
+            "claim_generator": "Adobe_Photoshop/26.11.0 adobe_c2pa/0.14.2 c2pa-rs/0.43.0",
+            "claim_generator_info": [
+                {
+                    "name": "Adobe Photoshop",
+                    "version": "26.11.0",
+                    "com.adobe.build": "20250918.r.18 a87e57f win"
+                }
+            ],
+            "title": "adobe-firefly.jpg",
+            "format": "image/jpeg",
+            "instance_id": "xmp:iid:e2d1e6fc-f924-4d35-ae11-0e05358e260b",
+            "thumbnail": {
+                "format": "image/jpeg",
+                "data": {
+                    "type": "Buffer",
+                    "data": []
+                }
+            },
+            "ingredients": [
+                {
+                    "title": "adobe-20220124-CA.jpg",
+                    "format": "image/jpeg",
+                    "document_id": "xmp:iid:69c168c1-009f-4de7-8492-265d2ec7526c",
+                    "instance_id": "xmp:iid:69c168c1-009f-4de7-8492-265d2ec7526c",
+                    "thumbnail": {
+                        "format": "image/jpeg",
+                        "data": {
+                            "type": "Buffer",
+                            "data": []
+                        }
+                    },
+                    "relationship": "componentOf",
+                    "active_manifest": "contentauth:urn:uuid:04cdf4ec-f713-4e47-a8d6-7af56501ce4b",
+                    "metadata": {
+                        "dateTime": "2025-10-04T18:38:30.148Z"
+                    },
+                    "label": "c2pa.ingredient",
+                    "manifest": {
+                        "claim_generator": "make_test_images/0.16.1 c2pa-rs/0.16.1",
+                        "title": "CA.jpg",
+                        "format": "image/jpeg",
+                        "instance_id": "xmp:iid:c39510ae-26d2-469c-8a59-3e57aa87cb8b",
+                        "thumbnail": {
+                            "format": "image/jpeg",
+                            "identifier": "self#jumbf=/c2pa/contentauth:urn:uuid:04cdf4ec-f713-4e47-a8d6-7af56501ce4b/c2pa.assertions/c2pa.thumbnail.claim.jpeg"
+                        },
+                        "ingredients": [
+                            {
+                                "title": "A.jpg",
+                                "format": "image/jpeg",
+                                "document_id": "xmp.did:813ee422-9736-4cdc-9be6-4e35ed8e41cb",
+                                "instance_id": "xmp.iid:813ee422-9736-4cdc-9be6-4e35ed8e41cb",
+                                "thumbnail": {
+                                    "format": "image/jpeg",
+                                    "identifier": "self#jumbf=c2pa.assertions/c2pa.thumbnail.ingredient.jpeg"
+                                },
+                                "relationship": "parentOf",
+                                "label": "c2pa.ingredient"
+                            }
+                        ],
+                        "assertions": [
+                            {
+                                "label": "stds.schema-org.CreativeWork",
+                                "data": {
+                                    "@context": "http://schema.org/",
+                                    "@type": "CreativeWork",
+                                    "author": [
+                                        {
+                                            "@type": "Person",
+                                            "name": "Adobe make_test"
+                                        }
+                                    ]
+                                },
+                                "kind": "Json"
+                            },
+                            {
+                                "label": "c2pa.actions",
+                                "data": {
+                                    "actions": [
+                                        {
+                                            "action": "c2pa.opened",
+                                            "parameters": {
+                                                "ingredient": {
+                                                    "url": "self#jumbf=c2pa.assertions/c2pa.ingredient",
+                                                    "hash": [
+                                                        181,
+                                                        48,
+                                                        67,
+                                                        227,
+                                                        241,
+                                                        52,
+                                                        71,
+                                                        64,
+                                                        35,
+                                                        45,
+                                                        71,
+                                                        73,
+                                                        22,
+                                                        155,
+                                                        21,
+                                                        207,
+                                                        121,
+                                                        68,
+                                                        252,
+                                                        162,
+                                                        84,
+                                                        171,
+                                                        109,
+                                                        149,
+                                                        207,
+                                                        69,
+                                                        6,
+                                                        171,
+                                                        56,
+                                                        68,
+                                                        165,
+                                                        91
+                                                    ]
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "action": "c2pa.color_adjustments",
+                                            "parameters": {
+                                                "name": "brightnesscontrast"
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        ],
+                        "signature_info": {
+                            "alg": "Ps256",
+                            "issuer": "C2PA Test Signing Cert",
+                            "cert_serial_number": "720724073027128164015125666832722375746636448153",
+                            "time": "2023-01-24T14:48:56+00:00"
+                        },
+                        "label": "contentauth:urn:uuid:04cdf4ec-f713-4e47-a8d6-7af56501ce4b"
+                    }
+                }
+            ],
+            "credentials": [
+                {
+                    "type": [
+                        "VerifiableCredential"
+                    ],
+                    "proof": {
+                        "created": "2025-10-04T18:38:12.211507690Z",
+                        "type": "Ed25519Signature2018",
+                        "jws": "f72e4576b45868d3f3b0d309cf69e9d1e267df1c8828afd08017735cde460c3aee51e0ec1b2e000ac0f44aa282abfd82fd324afea6fbb1673d6401e57b85f230c",
+                        "verificationMethod": "did:adobe:f6c218278c6b96f5d9be3aa0857ba61336fbd74cb0e114c087201d6e9a81c54ff",
+                        "proofPurpose": "assertionMethod"
+                    },
+                    "credentialSubject": {
+                        "id": "did:adobe:f6c218278c6b96f5d9be3aa0857ba61336fbd74cb0e114c087201d6e9a81c54ff",
+                        "name": "Maria Dolores Pujol"
+                    },
+                    "@context": [
+                        "https://www.w3.org/2018/credentials/v1"
+                    ]
+                }
+            ],
+            "assertions": [
+                {
+                    "label": "stds.schema-org.CreativeWork",
+                    "data": {
+                        "@context": "https://schema.org",
+                        "@type": "CreativeWork",
+                        "author": [
+                            {
+                                "@type": "Person",
+                                "identifier": "did:adobe:f6c218278c6b96f5d9be3aa0857ba61336fbd74cb0e114c087201d6e9a81c54ff",
+                                "name": "Maria Dolores Pujol",
+                                "credential": [
+                                    {
+                                        "url": "self#jumbf=/c2pa/adobe:urn:uuid:9e598e6b-9ce1-433d-ad1a-fcf26a6cbea7/c2pa.credentials/did:adobe:f6c218278c6b96f5d9be3aa0857ba61336fbd74cb0e114c087201d6e9a81c54ff",
+                                        "alg": "sha256",
+                                        "hash": [
+                                            148,
+                                            107,
+                                            195,
+                                            211,
+                                            29,
+                                            96,
+                                            76,
+                                            228,
+                                            160,
+                                            215,
+                                            41,
+                                            149,
+                                            110,
+                                            33,
+                                            15,
+                                            31,
+                                            100,
+                                            254,
+                                            137,
+                                            221,
+                                            3,
+                                            119,
+                                            117,
+                                            73,
+                                            201,
+                                            152,
+                                            236,
+                                            183,
+                                            225,
+                                            68,
+                                            244,
+                                            28
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "kind": "Json"
+                },
+                {
+                    "label": "c2pa.actions",
+                    "data": {
+                        "actions": [
+                            {
+                                "action": "c2pa.opened",
+                                "parameters": {
+                                    "com.adobe.tool": "open",
+                                    "com.adobe.icon": "https://cai-assertions.adobe.com/icons/import-dark.svg",
+                                    "description": "Opened a pre-existing file",
+                                    "instanceId": "xmp:iid:69c168c1-009f-4de7-8492-265d2ec7526c"
+                                }
+                            },
+                            {
+                                "action": "c2pa.unknown",
+                                "parameters": {
+                                    "com.adobe.tool": "",
+                                    "com.adobe.icon": "https://cai-assertions.adobe.com/icons/alert-circle-dark.svg",
+                                    "description": "Performed other edits or activity that couldn't be recognized"
+                                }
+                            }
+                        ],
+                        "metadata": {
+                            "reviewRatings": [
+                                {
+                                    "explanation": "Photoshop specific review",
+                                    "code": "com.adobe.thirdPartyScript",
+                                    "value": 5
+                                },
+                                {
+                                    "explanation": "A third party script ran that may have made outside changes",
+                                    "code": "actions.unknownActionsPerformed",
+                                    "value": 4
+                                },
+                                {
+                                    "explanation": "Photoshop specific review",
+                                    "code": "com.adobe.jsxScript",
+                                    "value": 5
+                                },
+                                {
+                                    "explanation": "A JSX script ran that may have made outside changes",
+                                    "code": "actions.unknownActionsPerformed",
+                                    "value": 4
+                                }
+                            ],
+                            "dateTime": "2025-10-04T18:38:27.137Z",
+                            "localizations": []
+                        }
+                    }
+                }
+            ],
+            "signature_info": {
+                "alg": "Ps256",
+                "issuer": "Adobe Inc.",
+                "cert_serial_number": "28651076926158642445677524766118780318",
+                "time": "2025-10-04T18:40:16+00:00",
+                "timeObject": "2025-10-04T18:40:16.000Z"
+            },
+            "label": "adobe:urn:uuid:9e598e6b-9ce1-433d-ad1a-fcf26a6cbea7"
+        },
+        "contentauth:urn:uuid:04cdf4ec-f713-4e47-a8d6-7af56501ce4b": {
+            "claim_generator": "make_test_images/0.16.1 c2pa-rs/0.16.1",
+            "title": "CA.jpg",
+            "format": "image/jpeg",
+            "instance_id": "xmp:iid:c39510ae-26d2-469c-8a59-3e57aa87cb8b",
+            "thumbnail": {
+                "format": "image/jpeg",
+                "data": {
+                    "type": "Buffer",
+                    "data": []
+                }
+            },
+            "ingredients": [
+                {
+                    "title": "A.jpg",
+                    "format": "image/jpeg",
+                    "document_id": "xmp.did:813ee422-9736-4cdc-9be6-4e35ed8e41cb",
+                    "instance_id": "xmp.iid:813ee422-9736-4cdc-9be6-4e35ed8e41cb",
+                    "thumbnail": {
+                        "format": "image/jpeg",
+                        "data": {
+                            "type": "Buffer",
+                            "data": []
+                        }
+                    },
+                    "relationship": "parentOf",
+                    "label": "c2pa.ingredient",
+                    "manifest": null
+                }
+            ],
+            "assertions": [
+                {
+                    "label": "stds.schema-org.CreativeWork",
+                    "data": {
+                        "@context": "http://schema.org/",
+                        "@type": "CreativeWork",
+                        "author": [
+                            {
+                                "@type": "Person",
+                                "name": "Adobe make_test"
+                            }
+                        ]
+                    },
+                    "kind": "Json"
+                },
+                {
+                    "label": "c2pa.actions",
+                    "data": {
+                        "actions": [
+                            {
+                                "action": "c2pa.opened",
+                                "parameters": {
+                                    "ingredient": {
+                                        "url": "self#jumbf=c2pa.assertions/c2pa.ingredient",
+                                        "hash": [
+                                            181,
+                                            48,
+                                            67,
+                                            227,
+                                            241,
+                                            52,
+                                            71,
+                                            64,
+                                            35,
+                                            45,
+                                            71,
+                                            73,
+                                            22,
+                                            155,
+                                            21,
+                                            207,
+                                            121,
+                                            68,
+                                            252,
+                                            162,
+                                            84,
+                                            171,
+                                            109,
+                                            149,
+                                            207,
+                                            69,
+                                            6,
+                                            171,
+                                            56,
+                                            68,
+                                            165,
+                                            91
+                                        ]
+                                    }
+                                }
+                            },
+                            {
+                                "action": "c2pa.color_adjustments",
+                                "parameters": {
+                                    "name": "brightnesscontrast"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "signature_info": {
+                "alg": "Ps256",
+                "issuer": "C2PA Test Signing Cert",
+                "cert_serial_number": "720724073027128164015125666832722375746636448153",
+                "time": "2023-01-24T14:48:56+00:00",
+                "timeObject": "2023-01-24T14:48:56.000Z"
+            },
+            "label": "contentauth:urn:uuid:04cdf4ec-f713-4e47-a8d6-7af56501ce4b"
+        }
+    },
+    "activeManifest": "adobe:urn:uuid:9e598e6b-9ce1-433d-ad1a-fcf26a6cbea7"
+}

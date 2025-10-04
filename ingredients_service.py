@@ -26,50 +26,52 @@ def parse_manifest_node(manifest_id: str, manifests: dict, visited=None, include
         "title": manifest.get("title", manifest_id),
         "issuer": signature.get("issuer", "Unknown"),
         "date": signature.get("time"),
-        "ingredients": [],
-        "actions": []
+        "claim_generator": manifest.get("claim_generator"),
+        "format": manifest.get("format"),
+        "instance_id": manifest.get("instance_id"),
+        "actions": [],
+        "ingredients": []
     }
 
+    # Thumbnails opcionales
     if include_thumbnails and "thumbnail" in manifest:
-        thumb = manifest.get("thumbnail", {})
-        data = thumb.get("data", {}).get("data", [])
-        if data:
-            b64 = base64.b64encode(bytearray(data)).decode("utf-8")
-            node["thumbnail"] = f"data:image/{thumb.get('format', 'jpeg')};base64,{b64}"
+        thumb_data = manifest["thumbnail"].get("data", {})
+        if thumb_data.get("type") == "Buffer":
+            import base64
+            b64_thumb = base64.b64encode(bytes(thumb_data.get("data", []))).decode("utf-8")
+            node["thumbnail"] = f"data:{manifest['thumbnail'].get('format')};base64,{b64_thumb}"
 
+    # Parse de assertions → acciones
     for assertion in manifest.get("assertions", []):
         if assertion.get("label") == "c2pa.actions":
-            for action in assertion.get("data", {}).get("actions", []):
-                node["actions"].append(action.get("action", "unknown").replace("c2pa.", ""))
-                ingredient = action.get("parameters", {}).get("ingredient")
-                if ingredient and "url" in ingredient:
-                    ingredient_id = ingredient["url"].split("/")[-1]
-                    if ingredient_id in manifests:
-                        child_node = parse_manifest_node(ingredient_id, manifests, visited, include_thumbnails)
-                        node["ingredients"].append(child_node)
+            actions_data = assertion.get("data", {})
+            for action in actions_data.get("actions", []):
+                node["actions"].append({
+                    "name": action.get("action"),
+                    "parameters": action.get("parameters", {}),
+                })
+            if "metadata" in actions_data:
+                node["actions_metadata"] = actions_data["metadata"]
 
+    # Parse de ingredientes
     for ing in manifest.get("ingredients", []):
         ing_id = ing.get("document_id")
         if ing_id and ing_id in manifests:
             child_node = parse_manifest_node(ing_id, manifests, visited, include_thumbnails)
             node["ingredients"].append(child_node)
         else:
-            child_node = {
+            node["ingredients"].append({
                 "title": ing.get("title", ing.get("document_id", "Unknown")),
                 "issuer": ing.get("issuer", "Unknown"),
-                "date": ing.get("date"),
-                "ingredients": [],
-                "actions": []
-            }
-            if include_thumbnails and "thumbnail" in ing:
-                thumb = ing.get("thumbnail", {})
-                data = thumb.get("data", {}).get("data", [])
-                if data:
-                    b64 = base64.b64encode(bytearray(data)).decode("utf-8")
-                    child_node["thumbnail"] = f"data:image/{thumb.get('format', 'jpeg')};base64,{b64}"
-            node["ingredients"].append(child_node)
+                "date": ing.get("metadata", {}).get("dateTime") or ing.get("date"),
+                "format": ing.get("format"),
+                "instance_id": ing.get("instance_id"),
+                "actions": [],
+                "ingredients": []
+            })
 
     return node
+
 
 
 def build_manifest_tree(manifest_data: dict, include_thumbnails=False):
