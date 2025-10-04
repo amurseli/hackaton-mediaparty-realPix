@@ -32,12 +32,23 @@ def parse_manifest_node(manifest_id: str, manifests: dict, visited=None, include
         "instance_id": manifest.get("instance_id"),
         "actions": [],
         "ingredients": [],
-        "ai_generated": is_ai_generated(
-            manifest.get("claim_generator"),
-            signature.get("issuer"),
-            manifest.get("title")
-        )
+        "ai_generated": False,
     }
+
+    action_tools = [
+        action.get("parameters", {}).get("com.adobe.tool", "")
+        for assertion in manifest.get("assertions", [])
+        if assertion.get("label") == "c2pa.actions"
+        for action in assertion.get("data", {}).get("actions", [])
+    ]
+
+    node["ai_generated"] = is_ai_generated(
+        manifest.get("claim_generator"),
+        signature.get("issuer"),
+        manifest.get("title"),
+        action_tools=action_tools
+    )
+
 
     if include_thumbnails and "thumbnail" in manifest:
         thumb_data = manifest["thumbnail"].get("data", {})
