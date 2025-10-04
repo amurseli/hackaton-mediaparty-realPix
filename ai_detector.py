@@ -8,7 +8,7 @@ AI_KEYWORDS = [
     "claude", "anthropic"
 ]
 
-def is_ai_generated(*values: str, action_tools: list[str] = None) -> bool:
+def is_ai_generated(*values: str, action_tools: list[str] = None) -> str:
     """
     Dado un conjunto de strings (issuer, claim_generator, título, etc.)
     y opcionalmente una lista de tools de acciones, devuelve True si
@@ -18,12 +18,12 @@ def is_ai_generated(*values: str, action_tools: list[str] = None) -> bool:
     joined = " ".join([v.lower() for v in values if v])
     for kw in AI_KEYWORDS:
         if kw in joined:
-            return True
+            return "Generado por IA"
 
     # Revisamos herramientas de las acciones
     if action_tools:
         for tool in action_tools:
             if "generative" in tool.lower():
-                return True
+                return "Modificado por IA Generativa"
 
-    return False
+    return "No se encontraron modificaciones por IA"
